@@ -25,20 +25,75 @@
         <h1>Selecione o Pokemon</h1>
         <form id="form-select">
           <select name="pokemons" id="pokemons">
-            <option value="a">a</option>
-            <option value="b">b</option>
-            <option value="c">c</option>
-            <option value="d">d</option>
+            <!-- <option value="bulbasaur">Bulbasauro</option> -->
           </select>
         </form>
       </section>
 
       <section id="pokemon-infos">
-        <form id="form-select">
-          <h2>Informações sobre o pokemon</h2>
-          aaaaaa
-          <select name="pokemons" id="pokemons"></select>
-        </form>
+        <h2>Informações sobre o pokemon</h2>
+
+        <div id="informacoes">
+          <div>
+            <img id="pokemon-img" src="" alt="Imagem do pokemon" />
+          </div>
+
+          <article id="art1">
+            <div class="info altura">
+              <h3>Altura:</h3>
+              <p></p>
+            </div>
+
+            <div class="info peso">
+              <h3>Peso:</h3>
+              <p></p>
+            </div>
+
+            <div class="info habitat">
+              <h3>Habitat:</h3>
+              <p></p>
+            </div>
+
+            <article id="art2">
+              <h3>Tipo</h3>
+              <p></p>
+            </article>
+          </article>
+
+          <article id="status">
+            <h3>Status base:</h3>
+            <div class="hp stats">
+              <label for="hp">HP</label>
+              <input id="hp" type="range" value="0" />
+              <p></p>
+            </div>
+            <div class="atk stats">
+              <label for="attack">Ataque</label>
+              <input id="attack" type="range" value="0" />
+              <p></p>
+            </div>
+            <div class="def stats">
+              <label for="defense">Defesa</label>
+              <input id="defense" type="range" value="0" />
+              <p></p>
+            </div>
+            <div class="spec-atk stats">
+              <label for="special-attack">Ataque Especial</label>
+              <input id="special-attack" type="range" value="0" />
+              <p></p>
+            </div>
+            <div class="spec-def stats">
+              <label for="special-defense">Defesa Especial</label>
+              <input id="special-defense" type="range" value="0" />
+              <p></p>
+            </div>
+            <div class="speed stats">
+              <label for="speed">Velocidade</label>
+              <input id="speed" type="range" value="0" />
+              <p></p>
+            </div>
+          </article>
+        </div>
       </section>
     </div>
 

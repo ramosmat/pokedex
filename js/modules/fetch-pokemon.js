@@ -1,39 +1,28 @@
 export default async function initFetchPokemons() {
   const url = "https://pokeapi.co/api/v2/pokemon/";
 
-  async function getPokemons(url) {}
+  const selected = document.querySelector("#pokemons");
 
-  // let pokemonStat = [];
-  // let pokemonInfos = {
-  //   types: [],
-  // };
+  const pokeSelected = selected.value;
 
   const pokemons = await fetch(url);
   const pokemonsJson = await pokemons.json();
-  const pokemonArray = Array.from(pokemonsJson.results)[0];
+  const pokemonArray = Array.from(pokemonsJson.results); //Pegar o value que foi selecionado no select
 
-  const poke = await fetch(pokemonArray.url);
-  const pokeJson = await poke.json(); //pegar height, weight e types
+  for (let i = 0; i < pokemonArray.length; i++) {
+    if (pokemonArray[i].name === pokeSelected) {
+      const poke = await fetch(pokemonArray[i].url);
+      const pokeJson = await poke.json(); //pegar height, weight e types
 
-  const species = await fetch(pokeJson.species.url);
-  const speciesJson = await species.json(); //pegar o habitat
+      const species = await fetch(pokeJson.species.url);
+      const speciesJson = await species.json(); //pegar o habitat
 
-  // pokemonInfos.height = pokeJson.height;
-  // pokemonInfos.weight = pokeJson.weight;
-  // pokemonInfos.habitat = speciesJson.habitat.name;
+      const pokemonInfos = {
+        pokeJson: pokeJson, //pegar height, weight e types
+        speciesJson: speciesJson, //pegar o habitat
+      };
 
-  // pokeJson.types.forEach((type) => {
-  //   pokemonInfos.types.push(type.type.name);
-  // });
-
-  // pokeJson.stats.forEach((statParam) => {
-  //   //Adicionando stats na Array pokemonStat
-  //   const newStats = {
-  //     statName: statParam.stat.name,
-  //     value: statParam.base_stat,
-  //   };
-  //   pokemonStat.push(newStats);
-  // });
-
-  getPokemons(url);
+      return pokemonInfos;
+    }
+  }
 }
