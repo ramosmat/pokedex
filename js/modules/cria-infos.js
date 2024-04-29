@@ -1,8 +1,10 @@
 import initFetchPokemons from "./fetch-pokemon.js";
 
 export default async function initCriaInfos() {
-  const divInfos = document.querySelector("#informacoes");
+  const divInfos = document.querySelector(".informacoes");
+  const divImg = document.querySelector("[data-img]");
   divInfos.classList.add("ativo");
+  divImg.classList.add("ativo");
 
   const fetchInfos = await initFetchPokemons();
   let pokemonInfos = {
@@ -33,10 +35,10 @@ export default async function initCriaInfos() {
   img.src = pokemonInfos.sprite;
 
   const divAltura = document.querySelector(".altura p");
-  divAltura.innerText = pokemonInfos.height + "cm";
+  divAltura.innerText = pokemonInfos.height;
 
   const divPeso = document.querySelector(".peso p");
-  divPeso.innerText = pokemonInfos.weight + "kg";
+  divPeso.innerText = pokemonInfos.weight;
 
   const divHabitat = document.querySelector(".habitat p");
   divHabitat.innerText =
@@ -56,11 +58,23 @@ export default async function initCriaInfos() {
   tipos.innerText = pokemonInfos.types;
 
   const divStats = document.querySelectorAll(".stats");
+  const cores = [
+    "#F56565",
+    "#6B347E",
+    "#4299E1",
+    "#FFBB55",
+    "#C25450",
+    "#00C68F",
+  ];
 
-  divStats.forEach((div) => {
+  divStats.forEach((div, index) => {
     const statId = div.children[1].id;
 
-    div.children[1].value = pokemonInfos[statId];
+    div.children[1].children[0].style.width = pokemonInfos[statId] + "px";
+    div.children[1].children[0].style.height = 10 + "px";
+    div.children[1].children[0].style.backgroundColor = cores[index];
+    div.children[1].children[0].style.zIndex = 200;
+
     div.children[2].innerText = pokemonInfos[statId];
   });
 }

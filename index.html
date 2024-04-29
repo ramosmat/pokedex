@@ -25,19 +25,21 @@
         <h1>Selecione o Pokemon</h1>
         <form id="form-select">
           <select name="pokemons" id="pokemons">
+            <option></option>
             <!-- <option value="bulbasaur">Bulbasauro</option> -->
           </select>
+          <div data-img>
+            <img id="pokemon-img" src="" alt="Imagem do pokemon" />
+          </div>
         </form>
       </section>
 
       <section id="pokemon-infos">
-        <h2>Informações sobre o pokemon</h2>
+        <div>
+          <h1>Informações sobre o pokemon</h1>
+        </div>
 
-        <div id="informacoes">
-          <div>
-            <img id="pokemon-img" src="" alt="Imagem do pokemon" />
-          </div>
-
+        <div class="informacoes">
           <article id="art1">
             <div class="info altura">
               <h3>Altura:</h3>
@@ -64,32 +66,55 @@
             <h3>Status base:</h3>
             <div class="hp stats">
               <label for="hp">HP</label>
-              <input id="hp" type="range" value="0" />
+              <div id="hp" class="barBg">
+                <div data-value></div>
+              </div>
+              <!-- <input id="hp" type="range" value="0" /> -->
               <p></p>
             </div>
+
             <div class="atk stats">
               <label for="attack">Ataque</label>
-              <input id="attack" type="range" value="0" />
+              <div id="attack" class="barBg">
+                <div data-value></div>
+              </div>
+              <!-- <input id="attack" type="range" value="0" /> -->
               <p></p>
             </div>
+
             <div class="def stats">
               <label for="defense">Defesa</label>
-              <input id="defense" type="range" value="0" />
+              <div id="defense" class="barBg">
+                <div data-value></div>
+              </div>
+              <!-- <input id="defense" type="range" value="0" /> -->
               <p></p>
             </div>
+
             <div class="spec-atk stats">
               <label for="special-attack">Ataque Especial</label>
-              <input id="special-attack" type="range" value="0" />
+              <div id="special-attack" class="barBg">
+                <div data-value></div>
+              </div>
+              <!-- <input id="special-attack" type="range" value="0" /> -->
               <p></p>
             </div>
+
             <div class="spec-def stats">
               <label for="special-defense">Defesa Especial</label>
-              <input id="special-defense" type="range" value="0" />
+              <div id="special-defense" class="barBg">
+                <div data-value></div>
+              </div>
+              <!-- <input id="special-defense" type="range" value="0" /> -->
               <p></p>
             </div>
+
             <div class="speed stats">
               <label for="speed">Velocidade</label>
-              <input id="speed" type="range" value="0" />
+              <div id="speed" class="barBg">
+                <div data-value></div>
+              </div>
+              <!-- <input id="speed" type="range" value="0" /> -->
               <p></p>
             </div>
           </article>

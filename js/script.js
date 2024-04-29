@@ -5,3 +5,7 @@ import initCriaOpcoes from "./modules/cria-opcoes.js";
 // initCriaInfos();
 initSelectChange();
 initCriaOpcoes();
+
+const teste = document.querySelector("#teste");
+
+teste.style.color = "red";
