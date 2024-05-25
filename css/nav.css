@@ -12,25 +12,18 @@
 
 .menu h1 {
   font-size: 2.5rem;
-  color: black;
+  color: white;
   margin: 0 40px;
 }
 
-.menu a {
-  display: block;
-  font-size: 2rem;
-  text-decoration: none;
-  margin-right: 20px;
-  text-align: right;
-}
-
-@media (width <= 850px) {
+@media (width <= 855px) {
   body {
     margin: 0;
   }
   .menu {
     grid-column: 1 / -1;
-    margin: 0.5rem 0;
+    margin: 0 0 0.5rem 0;
+    padding: 1rem;
     justify-content: center;
   }
 }
@@ -38,8 +31,5 @@
 @media (width <= 450px) {
   .menu h1 {
     font-size: 2rem;
-  }
-  .menu a {
-    margin-right: 0;
   }
 }
