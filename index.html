@@ -3,29 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Pokedex para consulta à status de Pokemons"
+    />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <title>Pokemon Infos</title>
   </head>
   <body>
     <div class="grid-container">
-      <section class="menu">
-        <nav id="nav">
-          <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Sobre</a></li>
-            <li>
-              <a href="https://github.com/ramosmat/" target="_blank">Dev →</a>
-            </li>
-            <!-- <li><a href="">Login</a></li> -->
-          </ul>
-        </nav>
-      </section>
+      <nav class="menu">
+        <h1>Pokedex</h1>
+        <a href="https://github.com/ramosmat/" target="_blank">Dev →</a>
+      </nav>
 
       <section id="pokemon-select">
         <h1>Selecione o Pokemon</h1>
         <form id="form-select">
-          <select name="pokemons" id="pokemons">
-            <option></option>
+          <select name="pokemons" id="pokemons" aria-label="Seleção">
+            <option disabled selected hidden>Pokemon</option>
             <!-- <option value="bulbasaur">Bulbasauro</option> -->
           </select>
           <div data-img>
@@ -56,10 +52,10 @@
               <p></p>
             </div>
 
-            <article id="art2">
+            <div class="info tipo">
               <h3>Tipo</h3>
               <p></p>
-            </article>
+            </div>
           </article>
 
           <article id="status">

@@ -1,0 +1,66 @@
+#pokemon-select {
+  grid-column: 2/3;
+  border-right: 1px solid grey;
+}
+
+#form-select {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 3rem;
+}
+
+#form-select select {
+  text-align: center;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 600;
+}
+
+[data-img] {
+  display: none;
+}
+
+[data-img].ativo {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  width: 50px;
+}
+
+@media (width <= 850px) {
+  #pokemon-select {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    border-right: none;
+    border-bottom: 1px solid grey;
+  }
+
+  #pokemon-select h1 {
+    text-align: center;
+    margin: 0.5rem 0;
+  }
+
+  #form-select {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0.5rem 0;
+    margin: 1rem 0;
+  }
+
+  #form-select select {
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 600;
+  }
+
+  [data-img].ativo {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+  }
+}

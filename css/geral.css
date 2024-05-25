@@ -1,15 +1,10 @@
 body {
   background-color: #ffeccc;
+  font-family: "IBM Plex Mono", monospace;
 }
 
 ul {
   list-style-type: none;
-}
-
-h1,
-h3,
-a {
-  font-family: "IBM Plex Mono", monospace;
 }
 
 a {
@@ -31,86 +26,4 @@ label {
   font-weight: 500;
   font-size: 1.25rem;
   color: #166672;
-}
-
-.menu {
-  grid-column: 3 / 5;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  background: #fb5;
-}
-
-.menu ul {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 10px;
-}
-
-.menu li a {
-  display: block;
-  text-decoration: none;
-  margin-right: 20px;
-}
-
-.grid-container {
-  display: grid;
-  grid-template-columns: 1fr 200px minmax(300px, 800px) 1fr;
-}
-
-[data-img] {
-  display: none;
-}
-
-[data-img].ativo {
-  display: flex;
-  justify-content: center;
-  margin-top: 3rem;
-}
-
-#pokemon-select {
-  grid-column: 2/3;
-  border-right: 1px solid grey;
-}
-
-#pokemon-select select {
-  padding: 0.5rem 0.75rem;
-  font-size: 1rem;
-  font-family: "IBM Plex Mono", monospace;
-  font-weight: 600;
-}
-
-#pokemon-infos {
-  grid-column: 3/4;
-  margin-left: 3rem;
-}
-
-.informacoes {
-  display: none;
-}
-
-.informacoes.ativo {
-  display: flex;
-  gap: 50px;
-}
-
-#status {
-  padding-left: 25px;
-  /* border-left: 1px solid grey; */
-}
-
-#status div {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.barBg {
-  width: 130px;
-  height: 10px;
-  background-color: #dcdcdc;
-  border-radius: 1rem;
-}
-
-[data-value] {
-  border-radius: 1rem;
 }

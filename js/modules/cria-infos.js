@@ -45,7 +45,7 @@ export default async function initCriaInfos() {
     pokemonInfos.habitat.charAt(0).toUpperCase() +
     pokemonInfos.habitat.slice(1);
 
-  const tipos = document.querySelector("#art2 p");
+  const tipos = document.querySelector(".tipo p");
   tipos.innerText = "";
 
   for (let i = 0; i < pokemonInfos.types.length; i++) {
