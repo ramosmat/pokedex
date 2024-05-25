@@ -1,0 +1,14 @@
+.grid-container {
+  display: grid;
+  padding: 0 40px;
+  grid-template-columns: 1fr 200px minmax(300px, 800px) 1fr;
+}
+
+@media (width <= 850px) {
+  .grid-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0 40px;
+    /* grid-template-columns: 1fr 200px minmax(300px, 800px) 1fr; */
+  }
+}
