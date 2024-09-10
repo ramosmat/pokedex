@@ -2,6 +2,7 @@
   background: #f0f0f0;
   padding: 10px 15px;
   cursor: pointer;
+  transition: 0.3s;
 }
 
 .pokemonName {
@@ -12,8 +13,7 @@
   font-family: Roboto;
 }
 
-.pokemonCard:hover,
-.pokemonCard:focus {
+.pokemonCard:hover {
   box-shadow: 0 0 3px 1px #ffaa00;
 }
 

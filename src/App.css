@@ -65,3 +65,8 @@ a {
   grid-template-columns: repeat(5, 1fr);
   gap: 20px 30px;
 }
+
+.active {
+  opacity: 1 !important;
+  box-shadow: 0 0 3px 1px #ffaa00;
+}

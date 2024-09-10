@@ -12,7 +12,7 @@ function App() {
     async function getPokemons() {
       const { response, json } = await request(`${url}`);
 
-      console.log(data);
+      // console.log(data);
     }
 
     getPokemons();
