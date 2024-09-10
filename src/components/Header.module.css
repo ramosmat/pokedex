@@ -1,6 +1,7 @@
 .headerBg {
   background: black;
   grid-column: 2 / -1;
+  margin-bottom: 60px;
 }
 
 .header {

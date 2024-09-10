@@ -48,3 +48,20 @@ a {
   display: grid;
   grid-template-columns: 1fr 200px minmax(300px, 800px) 1fr;
 }
+
+.titulo {
+  grid-column: 2/-1;
+  font-family: Poppins;
+  margin-bottom: 32px;
+}
+
+.titulo span {
+  color: #ffbb11;
+}
+
+.selecao {
+  grid-column: 2/4;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px 30px;
+}

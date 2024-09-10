@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import Header from './components/Header';
 import useFetch from './hooks/useFetch';
+import Option from './components/Option';
 
 function App() {
   const url = 'https://pokeapi.co/api/v2/pokemon/';
@@ -9,7 +10,9 @@ function App() {
 
   useEffect(() => {
     async function getPokemons() {
-      const { response, json } = await request(url);
+      const { response, json } = await request(`${url}`);
+
+      console.log(data);
     }
 
     getPokemons();
@@ -22,6 +25,14 @@ function App() {
   return (
     <div className="grid-container">
       <Header />
+      <h1 className="titulo">
+        escolha seu pokemon <span>.</span>
+      </h1>
+      <section className="selecao">
+        {data.map((pokemon) => (
+          <Option key={pokemon.name} pokemon={pokemon} />
+        ))}
+      </section>
     </div>
   );
 }

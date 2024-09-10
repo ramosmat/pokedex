@@ -1,0 +1,22 @@
+.pokemonCard {
+  background: #f0f0f0;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.pokemonName {
+  color: #1c1c1c;
+  font-size: 24px;
+  text-align: center;
+  text-transform: capitalize;
+  font-family: Roboto;
+}
+
+.pokemonCard:hover,
+.pokemonCard:focus {
+  box-shadow: 0 0 3px 1px #ffaa00;
+}
+
+.pokemonCard:not(:hover) {
+  opacity: 0.5;
+}
