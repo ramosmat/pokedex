@@ -7,10 +7,14 @@ const Header = () => {
     <div className={styles.headerBg}>
       <div className={`${styles.header} container`}>
         <h1>Pokedex</h1>
-        <div className={styles.dev}>
+        <a
+          href="https://portfolio-six-green-64.vercel.app"
+          className={styles.dev}
+          target="_blank"
+        >
           <h3>dev</h3>
           <Arrow className={styles.arrow} />
-        </div>
+        </a>
       </div>
     </div>
   );

@@ -1,0 +1,30 @@
+.sectionSel {
+  grid-column: 2/4;
+}
+
+.divSel {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.titulo {
+  grid-column: 2/-1;
+  font-family: Poppins;
+  font-size: 32px;
+  margin-bottom: 32px;
+}
+
+.titulo span {
+  color: #ffbb11;
+}
+
+.selecao {
+  display: grid;
+  align-items: end;
+  justify-content: center;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 30px 15px;
+  margin-bottom: 60px;
+}
