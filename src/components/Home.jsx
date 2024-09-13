@@ -24,7 +24,8 @@ const Home = () => {
       num = json.id;
       name = json.name;
       types = [...json.types];
-      img = json.sprites.other.dream_world.front_default;
+      // img = json.sprites.other.dream_world.front_default;
+      img = json.sprites.other['official-artwork'].front_default;
 
       newDados = {
         num,

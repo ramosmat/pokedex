@@ -1,6 +1,6 @@
 .headerBg {
   background: black;
-  grid-column: 2 / -1;
+  grid-column: 2 / 5;
   margin-bottom: 60px;
 }
 
@@ -47,4 +47,34 @@
 
 .arrow {
   width: 16px;
+}
+
+@media (width <= 600px) {
+  .header h1 {
+    font-size: 32px;
+  }
+}
+
+@media (width <=500px) {
+  .headerBg {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (width <= 450px) {
+  .headerBg {
+    margin-bottom: 40px;
+  }
+  .header {
+    padding: 20px 28px;
+  }
+}
+
+@media (width <= 380px) {
+  .header h1 {
+    font-size: 24px;
+  }
+  .dev h3 {
+    font-size: 20px;
+  }
 }

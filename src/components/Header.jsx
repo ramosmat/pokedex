@@ -5,7 +5,7 @@ import Arrow from '../assets/arrow.svg?react';
 const Header = () => {
   return (
     <div className={styles.headerBg}>
-      <div className={`${styles.header} container`}>
+      <div className={`${styles.header}`}>
         <h1>Pokedex</h1>
         <a
           href="https://portfolio-six-green-64.vercel.app"

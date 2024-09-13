@@ -9,7 +9,6 @@ function App() {
     <section className="grid-container">
       <BrowserRouter>
         <Header />
-
         <Routes>
           <Route path="/pokemon/*" element={<Pokemon />} />
           <Route path="*" element={<Home />} />

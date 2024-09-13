@@ -16,3 +16,10 @@
   font-weight: 600;
   cursor: pointer;
 }
+
+@media (width <= 400px) {
+  .button {
+    padding: 15px 60px;
+    line-height: 1.5;
+  }
+}

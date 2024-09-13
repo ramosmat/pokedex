@@ -53,3 +53,9 @@ a {
   opacity: 1 !important;
   box-shadow: 0 0 3px 1px #ffaa00;
 }
+
+@media (width <= 600px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+}
