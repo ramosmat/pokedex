@@ -2,6 +2,7 @@ import styles from './Home.module.css';
 import { useEffect, useState } from 'react';
 import useFetch from '../hooks/useFetch';
 import Option from './Pokemons/Option';
+import Button from './Helper/Button';
 
 const Home = () => {
   const [pokemonSelected, setPokemonSelected] = useState('');
@@ -45,7 +46,7 @@ const Home = () => {
   // Pegar os primeiros pokemons da API
   useEffect(() => {
     async function getPokemons() {
-      const { json } = await request(`${url}`); // Retorna name e url dos pokemons
+      const { json } = await request(`${url}?limit=5`); // Retorna name e url dos pokemons
     }
 
     getPokemons();
@@ -80,6 +81,7 @@ const Home = () => {
               />
             ))}
           </div>
+          <Button />
         </div>
       </section>
     );

@@ -1,11 +1,10 @@
 .sectionSel {
-  grid-column: 2/4;
+  grid-column: 2/-1;
 }
 
 .divSel {
-  display: flex;
-  gap: 1.5rem;
-  justify-content: space-around;
+  display: grid;
+  justify-content: start;
   align-items: center;
 }
 

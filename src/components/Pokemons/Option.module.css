@@ -4,6 +4,11 @@
   padding: 8px 16px;
   background: #f0f0f0;
   font-family: Roboto;
+  transition: 0.3s;
+}
+
+.item:hover {
+  transform: translateY(-5px);
 }
 
 a {

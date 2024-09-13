@@ -1,0 +1,18 @@
+.div {
+  place-self: center;
+  transition: 0.3s;
+}
+
+.div:hover {
+  transform: translateY(-5px);
+}
+
+.button {
+  padding: 15px 120px;
+  border: none;
+  border-radius: 2px;
+  background: linear-gradient(#ffc636, #c98f00);
+  color: black;
+  font-weight: 600;
+  cursor: pointer;
+}
