@@ -1,15 +1,28 @@
 import styles from './Home.module.css';
 import { useEffect, useState } from 'react';
 import useFetch from '../hooks/useFetch';
-import Option from './Pokemons/Option';
+import PokemonItem from './Pokemons/PokemonItem';
 import Button from './Helper/Button';
 
 const Home = () => {
-  const [pokemonSelected, setPokemonSelected] = useState('');
   const [pokemons, setPokemons] = useState([]);
   const url = 'https://pokeapi.co/api/v2/pokemon/';
   const { data, loading, request } = useFetch();
+  const [nextPage, setNextPage] = useState();
 
+  // Pegar os primeiros pokemons da API
+  useEffect(() => {
+    async function getPokemons() {
+      const { json } = await request(`${url}?limit=10`); // Retorna name e url dos pokemons
+
+      console.log('primeiro fetch:', json);
+      setNextPage(json.next);
+    }
+
+    getPokemons();
+  }, [request, url]);
+
+  //Pegar resumo de cada pokemon
   async function getPokemonBrief(pokemon) {
     let num;
     let name;
@@ -44,15 +57,6 @@ const Home = () => {
     }
   }
 
-  // Pegar os primeiros pokemons da API
-  useEffect(() => {
-    async function getPokemons() {
-      const { json } = await request(`${url}?limit=5`); // Retorna name e url dos pokemons
-    }
-
-    getPokemons();
-  }, [request, url]);
-
   // Executar a função getPokemonBrief para cada URL
   useEffect(() => {
     if (data) {
@@ -75,14 +79,14 @@ const Home = () => {
         <div className={styles.divSel}>
           <div className={styles.selecao}>
             {pokemons.map((pokemon) => (
-              <Option
-                key={pokemon.name}
-                pokemon={pokemon}
-                setpokemonSelected={setPokemonSelected}
-              />
+              <PokemonItem key={pokemon.name} pokemon={pokemon} />
             ))}
           </div>
-          <Button />
+          <Button
+            nextPage={nextPage}
+            setNextPage={setNextPage}
+            getPokemonBrief={getPokemonBrief}
+          />
         </div>
       </section>
     );

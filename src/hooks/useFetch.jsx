@@ -4,7 +4,6 @@ const useFetch = () => {
   const [data, setData] = React.useState([]);
   const [error, setError] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
-  const [nextPage, setNextPage] = React.useState(null);
 
   const request = React.useCallback(async (url, options) => {
     let response;
@@ -21,12 +20,11 @@ const useFetch = () => {
     } finally {
       setData(json.results);
       setLoading(false);
-      if (json.next) setNextPage(json.next);
       return { response, json };
     }
   }, []);
 
-  return { data, loading, error, request, nextPage };
+  return { data, loading, error, request };
 };
 
 export default useFetch;

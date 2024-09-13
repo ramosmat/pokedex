@@ -20,6 +20,7 @@
   grid-template-columns: 1fr;
   justify-content: center;
   align-items: center;
+  margin-bottom: 60px;
 }
 
 .selecao {
@@ -65,6 +66,12 @@
   }
   .selecao {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (width <= 450px) {
+  .divSel {
+    margin-bottom: 40px;
   }
 }
 

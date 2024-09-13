@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from './Option.module.css';
+import styles from './PokemonItem.module.css';
 import { NavLink } from 'react-router-dom';
 
-const Option = ({ pokemon }) => {
+const PokemonItem = ({ pokemon }) => {
   return (
     <NavLink to={`/pokemon/${pokemon.name}`}>
       <div className={styles.item}>
@@ -29,4 +29,4 @@ const Option = ({ pokemon }) => {
   );
 };
 
-export default Option;
+export default PokemonItem;
