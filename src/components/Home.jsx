@@ -73,7 +73,7 @@ const Home = () => {
   if (data && pokemons) {
     return (
       <section className={styles.sectionSel}>
-        <h1 className={styles.titulo}>
+        <h1 className="titulo">
           escolha seu pokemon <span>.</span>
         </h1>
         <div className={styles.divSel}>

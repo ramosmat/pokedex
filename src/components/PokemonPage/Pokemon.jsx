@@ -4,6 +4,14 @@ import Button from '../Helper/Button';
 import { NavLink } from 'react-router-dom';
 
 const Pokemon = () => {
+  const statColors = [
+    '#ed1c15',
+    '#bd12f8',
+    '#4299e1',
+    '#ffbb55',
+    '#f56565',
+    '#00c68f',
+  ];
   const [infos, setInfos] = useState();
   const [chain, setChain] = useState();
   const [habitat, sethabitat] = useState();
@@ -20,7 +28,7 @@ const Pokemon = () => {
       const response = await fetch(`${url}${pokemonName}`);
       const json = await response.json();
 
-      console.log('fetch pokemon, infos:', json);
+      // console.log('fetch pokemon, infos:', json);
 
       if (response.ok && json) {
         setInfos(json);
@@ -49,11 +57,11 @@ const Pokemon = () => {
   if (infos) {
     return (
       <section className={styles.sectionInfos}>
-        <h1 className={styles.titulo}>
+        <h1 className={`titulo`}>
           {infos.name} <span>nº {infos.id}</span>
         </h1>
         <div className={styles.divStats}>
-          <div className={styles.bgBlack}>
+          <div className={styles.bgDark}>
             <div className={styles.divImg}>
               <img
                 src={infos.sprites.other.showdown.front_default}
@@ -78,7 +86,7 @@ const Pokemon = () => {
                 Tipo{' '}
                 <div>
                   {infos.types.map((type) => (
-                    <span>{type.type.name}</span>
+                    <span key={type.type.name}>{type.type.name}</span>
                   ))}
                 </div>
               </h4>
@@ -86,13 +94,34 @@ const Pokemon = () => {
                 Habilidades{' '}
                 <div>
                   {infos.abilities.map((ability) => (
-                    <span>{ability.ability.name}</span>
+                    <span key={ability.ability.name}>
+                      {ability.ability.name}
+                    </span>
                   ))}
                 </div>
               </h4>
             </div>
+
+            <div className={styles.divStatsValues}>
+              {infos.stats.map((stat, index) => (
+                <div key={stat.stat.name} className={styles.divStat}>
+                  <h4>{stat.stat.name}</h4>
+                  <div className={styles.statBg}>
+                    <div
+                      className={styles.statBar}
+                      style={{
+                        backgroundColor: statColors[index],
+                        width: stat.base_stat,
+                      }}
+                    ></div>
+                  </div>
+                  <h4>{stat.base_stat}</h4>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
+
         <div className={styles.divButton}>
           <NavLink to="/">
             <button className={styles.button}>VOLTAR</button>

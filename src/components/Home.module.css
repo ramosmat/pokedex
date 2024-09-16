@@ -4,17 +4,6 @@
   flex-direction: column;
 }
 
-.titulo {
-  grid-column: 2/-1;
-  font-family: Poppins;
-  font-size: 32px;
-  margin-bottom: 32px;
-}
-
-.titulo span {
-  color: #ffbb11;
-}
-
 .divSel {
   display: grid;
   grid-template-columns: 1fr;
@@ -61,9 +50,6 @@
     align-items: center;
     padding: 0;
   }
-  .titulo {
-    font-size: 28px;
-  }
   .selecao {
     grid-template-columns: 1fr;
   }
@@ -78,11 +64,5 @@
 @media (width <=400px) {
   .sectionSel {
     padding: 0 28px;
-  }
-}
-
-@media (width <= 380px) {
-  .titulo {
-    font-size: 20px;
   }
 }
