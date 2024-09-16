@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import styles from './Button.module.css';
 
-const Button = ({ nextPage, setNextPage, getPokemonBrief }) => {
+const Button = ({ nextPage, setNextPage, getPokemonBrief, text }) => {
   const [newData, setNewData] = useState();
 
   async function getMorePokemons() {
     const response = await fetch(nextPage);
     const newPokemons = await response.json();
 
-    console.log('newPokemons:', newPokemons);
+    // console.log('newPokemons:', newPokemons);
 
     if (response.ok && newPokemons) {
       setNextPage(newPokemons.next);
@@ -28,7 +28,7 @@ const Button = ({ nextPage, setNextPage, getPokemonBrief }) => {
   return (
     <div className={styles.div}>
       <button onClick={getMorePokemons} className={styles.button}>
-        CARREGAR MAIS
+        {text}
       </button>
     </div>
   );

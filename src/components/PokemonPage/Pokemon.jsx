@@ -1,56 +1,106 @@
+import styles from './Pokemon.module.css';
 import { useState, useEffect } from 'react';
-import useFetch from '../../hooks/useFetch';
+import Button from '../Helper/Button';
+import { NavLink } from 'react-router-dom';
 
 const Pokemon = () => {
-  const { data, loading, request } = useFetch();
-  const [infos, setInfos] = useState(null);
-  const [encounters, setEncounters] = useState();
+  const [infos, setInfos] = useState();
+  const [chain, setChain] = useState();
+  const [habitat, sethabitat] = useState();
+  // const [evolution1, setEvolution1] = useState();
+  // const [evolution2, setEvolution2] = useState();
+  const url = 'https://pokeapi.co/api/v2/pokemon/';
 
-  // useEffect(() => {
-  //   async function getEncounters(url) {
-  //     const { response, json } = await request(url);
+  //Get only the pokemon name from url
+  const pokemonName = window.location.href.split('/').pop();
 
-  //     setEncounters(json);
-  //   }
+  //Retorna infos do pokemon
+  useEffect(() => {
+    async function getInfos() {
+      const response = await fetch(`${url}${pokemonName}`);
+      const json = await response.json();
 
-  //   async function getPokemon(url) {
-  //     const { response, json } = await request(url);
+      console.log('fetch pokemon, infos:', json);
 
-  //     if (response.ok && json) {
-  //       const img = json.sprites.other.showdown.front_default;
-  //       const abilities = json.abilities;
-  //       const height = json.height;
-  //       const weight = json.weight;
-  //       const types = json.types;
-  //       const stats = json.stats;
-  //       const encounters_url = json.location_area_encounters;
+      if (response.ok && json) {
+        setInfos(json);
+      }
+    }
 
-  //       if (encounters_url) {
-  //         getEncounters(encounters_url);
-  //       }
+    getInfos();
+  }, []);
 
-  //       setInfos({
-  //         img,
-  //         abilities,
-  //         height,
-  //         weight,
-  //         stats,
-  //         types,
-  //         encounters,
-  //       });
-  //     }
-  //   }
+  //habitat
+  useEffect(() => {
+    async function getHabitat() {
+      if (infos) {
+        const response = await fetch(infos.species.url);
+        const speciesJson = await response.json();
 
-  //   if (pokemonSelected) {
-  //     const url = pokemons.filter(
-  //       (pokemon) => pokemon.name === pokemonSelected,
-  //     )[0].url;
+        if (response.ok && speciesJson) {
+          sethabitat(speciesJson.habitat.name);
+        }
+      }
+    }
 
-  //     getPokemon(url);
-  //   }
-  // }, []);
+    getHabitat();
+  }, [infos]);
 
-  return <div></div>;
+  if (infos) {
+    return (
+      <section className={styles.sectionInfos}>
+        <h1 className={styles.titulo}>
+          {infos.name} <span>nº {infos.id}</span>
+        </h1>
+        <div className={styles.divStats}>
+          <div className={styles.bgBlack}>
+            <div className={styles.divImg}>
+              <img
+                src={infos.sprites.other.showdown.front_default}
+                alt="pokemon"
+              />
+            </div>
+            <div className={styles.qualities}>
+              <h4>
+                Altura <span>{infos.height}</span>
+              </h4>
+              <h4>
+                Peso <span>{infos.weight}</span>
+              </h4>
+
+              <h4>
+                Habitat
+                <div>
+                  <span>{habitat}</span>
+                </div>
+              </h4>
+              <h4>
+                Tipo{' '}
+                <div>
+                  {infos.types.map((type) => (
+                    <span>{type.type.name}</span>
+                  ))}
+                </div>
+              </h4>
+              <h4>
+                Habilidades{' '}
+                <div>
+                  {infos.abilities.map((ability) => (
+                    <span>{ability.ability.name}</span>
+                  ))}
+                </div>
+              </h4>
+            </div>
+          </div>
+        </div>
+        <div className={styles.divButton}>
+          <NavLink to="/">
+            <button className={styles.button}>VOLTAR</button>
+          </NavLink>
+        </div>
+      </section>
+    );
+  }
 };
 
 export default Pokemon;

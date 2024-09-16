@@ -15,7 +15,7 @@ const Home = () => {
     async function getPokemons() {
       const { json } = await request(`${url}?limit=10`); // Retorna name e url dos pokemons
 
-      console.log('primeiro fetch:', json);
+      // console.log('primeiro fetch:', json);
       setNextPage(json.next);
     }
 
@@ -86,6 +86,7 @@ const Home = () => {
             nextPage={nextPage}
             setNextPage={setNextPage}
             getPokemonBrief={getPokemonBrief}
+            text="CARREGAR MAIS"
           />
         </div>
       </section>
