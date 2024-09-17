@@ -99,6 +99,15 @@
   z-index: 10;
 }
 
+.divEvolutions {
+  grid-column: 2/-1;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
 .divButton {
   grid-column: 1 / -1;
   place-self: center;
@@ -110,6 +119,7 @@
 }
 
 .button {
+  margin-bottom: 60px;
   padding: 15px 120px;
   border: none;
   border-radius: 2px;
@@ -120,8 +130,15 @@
 }
 
 @media (width<=1050px) {
+  .sectionInfos {
+    grid-template-columns: 1fr;
+  }
   .bgDark {
     grid-column: 1 / -1;
+  }
+  .divEvolutions {
+    grid-column: 1/-1;
+    padding: 0 32px;
   }
 }
 
@@ -191,6 +208,9 @@
 
 @media (width <= 450px) {
   .divStats {
+    margin-bottom: 40px;
+  }
+  .divEvolutions {
     margin-bottom: 40px;
   }
 }

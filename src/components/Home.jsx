@@ -1,13 +1,15 @@
 import styles from './Home.module.css';
 import { useEffect, useState } from 'react';
 import useFetch from '../hooks/useFetch';
+import useBrief from '../hooks/useBrief';
 import PokemonItem from './Pokemons/PokemonItem';
 import Button from './Helper/Button';
 
 const Home = () => {
-  const [pokemons, setPokemons] = useState([]);
+  // const [pokemons, setPokemons] = useState([]);
   const url = 'https://pokeapi.co/api/v2/pokemon/';
   const { data, loading, request } = useFetch();
+  const { pokemons, getPokemonBrief } = useBrief();
   const [nextPage, setNextPage] = useState();
 
   // Pegar os primeiros pokemons da API
@@ -22,42 +24,7 @@ const Home = () => {
     getPokemons();
   }, [request, url]);
 
-  //Pegar resumo de cada pokemon
-  async function getPokemonBrief(pokemon) {
-    let num;
-    let name;
-    let types;
-    let img;
-    let newDados;
-
-    const dados = await fetch(pokemon.url);
-    const json = await dados.json();
-
-    if (dados.ok && json) {
-      num = json.id;
-      name = json.name;
-      types = [...json.types];
-      // img = json.sprites.other.dream_world.front_default;
-      img = json.sprites.other['official-artwork'].front_default;
-
-      newDados = {
-        num,
-        name,
-        types,
-        img,
-      };
-
-      // Usar a função de atualização para garantir que estamos atualizando o estado corretamente
-      setPokemons((prevPokemons) => {
-        const updatedPokemons = [...prevPokemons, newDados];
-
-        // Ordena o array pelo valor do parâmetro `num` em ordem crescente
-        return updatedPokemons.sort((a, b) => a.num - b.num);
-      });
-    }
-  }
-
-  // Executar a função getPokemonBrief para cada URL
+  // Executar a função getPokemonBrief para cada URL para pegar resumo de cada pokemon
   useEffect(() => {
     if (data) {
       data.forEach((pokemon) => {

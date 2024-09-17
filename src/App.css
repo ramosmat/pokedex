@@ -55,10 +55,15 @@ a {
   color: #ffbb11;
 }
 
+@media (width<=1050px) {
+  .titulo {
+    grid-column: 1/-1;
+  }
+}
+
 @media (width <= 600px) {
   .grid-container {
-    display: flex;
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
   .titulo {
     font-size: 28px;

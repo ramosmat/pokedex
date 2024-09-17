@@ -51,7 +51,8 @@
 }
 
 .divName p {
-  font-weight: 400;
+  text-transform: lowercase;
+  font-weight: 500;
   color: #666666;
 }
 
