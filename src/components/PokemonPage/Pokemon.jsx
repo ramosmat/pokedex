@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import Evolution from './Evolution';
 
-const Pokemon = () => {
+const Pokemon = ({ pokemonName, setPokemonName }) => {
   const statColors = [
     '#ed1c15',
     '#bd12f8',
@@ -15,12 +15,11 @@ const Pokemon = () => {
   const [infos, setInfos] = useState();
   const [chainURL, setChainURL] = useState();
   const [habitat, sethabitat] = useState();
-  // const [evolution1, setEvolution1] = useState();
-  // const [evolution2, setEvolution2] = useState();
+
   const url = 'https://pokeapi.co/api/v2/pokemon/';
 
   //Get only the pokemon name from url
-  const pokemonName = window.location.href.split('/').pop();
+  // const pokemonName = window.location.href.split('/').pop();
 
   //Retorna infos do pokemon
   useEffect(() => {
@@ -35,8 +34,8 @@ const Pokemon = () => {
       }
     }
 
-    getInfos();
-  }, []);
+    if (pokemonName) getInfos();
+  }, [pokemonName]);
 
   //habitat
   useEffect(() => {
@@ -45,7 +44,7 @@ const Pokemon = () => {
         const response = await fetch(infos.species.url);
         const speciesJson = await response.json();
 
-        // console.log(speciesJson);
+        console.log('speciesJson:', speciesJson);
 
         if (response.ok && speciesJson) {
           sethabitat(speciesJson.habitat.name);
@@ -126,12 +125,12 @@ const Pokemon = () => {
           </div>
         </section>
 
-        <section className={styles.sectionInfos}>
+        <section className={styles.sectionEvolution}>
           <h1 className={`titulo`}>
-            evoluções <span>.</span>
+            Cadeia de evoluções <span>.</span>
           </h1>
           <div className={styles.divEvolutions}>
-            <Evolution url={chainURL} />
+            <Evolution url={chainURL} setPokemonName={setPokemonName} />
           </div>
           <div className={styles.divButton}>
             <NavLink to="/">

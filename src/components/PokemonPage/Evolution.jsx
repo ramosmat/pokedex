@@ -3,7 +3,7 @@ import styles from './Evolution.module.css';
 import useBrief from '../../hooks/useBrief';
 import PokemonItem from '../Pokemons/PokemonItem';
 
-const Evolution = ({ url }) => {
+const Evolution = ({ url, setPokemonName }) => {
   const [evolutions, setEvolutions] = useState([]);
   const { pokemons, getPokemonBrief } = useBrief();
 
@@ -52,7 +52,11 @@ const Evolution = ({ url }) => {
   return (
     <div className={styles.evolucao}>
       {pokemons.map((pokemon) => (
-        <PokemonItem key={pokemon.name} pokemon={pokemon} />
+        <PokemonItem
+          key={pokemon.name}
+          pokemon={pokemon}
+          setPokemonName={setPokemonName}
+        />
       ))}
     </div>
   );

@@ -5,8 +5,7 @@ import useBrief from '../hooks/useBrief';
 import PokemonItem from './Pokemons/PokemonItem';
 import Button from './Helper/Button';
 
-const Home = () => {
-  // const [pokemons, setPokemons] = useState([]);
+const Home = ({ setPokemonName }) => {
   const url = 'https://pokeapi.co/api/v2/pokemon/';
   const { data, loading, request } = useFetch();
   const { pokemons, getPokemonBrief } = useBrief();
@@ -46,7 +45,11 @@ const Home = () => {
         <div className={styles.divSel}>
           <div className={styles.selecao}>
             {pokemons.map((pokemon) => (
-              <PokemonItem key={pokemon.name} pokemon={pokemon} />
+              <PokemonItem
+                key={pokemon.name}
+                pokemon={pokemon}
+                setPokemonName={setPokemonName}
+              />
             ))}
           </div>
           <Button
