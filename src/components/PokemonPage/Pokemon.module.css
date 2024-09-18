@@ -4,7 +4,6 @@
   display: grid;
   grid-template-columns: 96px 1fr;
   text-transform: capitalize;
-  /* flex-direction: column; */
 }
 
 .sectionInfos h1 span {
@@ -21,7 +20,7 @@
   grid-template-columns: inherit;
   justify-content: center;
   align-items: center;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
   font-family: Roboto;
 }
 
@@ -216,10 +215,10 @@
 
 @media (width <= 450px) {
   .divStats {
-    margin-bottom: 40px;
+    margin-bottom: 28px;
   }
   .divEvolutions {
-    margin-bottom: 40px;
+    margin-bottom: 28px;
   }
 }
 
