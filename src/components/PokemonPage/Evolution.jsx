@@ -16,23 +16,42 @@ const Evolution = ({ url, setPokemonName }) => {
       console.log('evolutionFetch:', json);
 
       if (response.ok && json) {
-        json.chain.evolves_to.forEach((element) => {
-          setEvolutions((prevEvolutions) => {
-            // Cria um novo array concatenando o estado anterior com o novo valor
-            const evolution1 = [...prevEvolutions, element.species];
+        // Adiciona o primeiro nível de evolução: json.chain.species
+        const initialSpecies = json.chain.species;
 
-            // Remove duplicados comparando a propriedade 'name' (ou outra que identifique o objeto)
-            const uniqueEvolutions = evolution1.filter(
+        json.chain.evolves_to.forEach((element) => {
+          // Extrai evolution2 do caminho json.chain.evolves_to.evolves_to.species
+          const evolution2 = element.evolves_to.map(
+            (evolution) => evolution.species,
+          );
+
+          setEvolutions((prevEvolutions) => {
+            // Cria um novo array com json.chain.species, element.species e evolution2
+            const newEvolutions = [
+              ...prevEvolutions,
+              initialSpecies, // Primeira evolução (json.chain.species)
+              element.species, // Segunda evolução (element.species)
+              ...evolution2, // Terceira evolução (json.chain.evolves_to.evolves_to.species)
+            ];
+
+            // Remove duplicados comparando a propriedade 'name'
+            const uniqueEvolutions = newEvolutions.filter(
               (item, index, self) =>
-                index === self.findIndex((e) => e.name === item.name), // ou 'id' se for um identificador único
+                index === self.findIndex((e) => e.name === item.name),
             );
 
-            // Retorna o array atualizado e sem duplicados
-            return uniqueEvolutions;
+            // Organiza pelo número extraído do final da URL
+            const sortedEvolutions = uniqueEvolutions.sort((a, b) => {
+              const idA = parseInt(a.url.match(/\/(\d+)\/$/)[1]);
+              const idB = parseInt(b.url.match(/\/(\d+)\/$/)[1]);
+              return idA - idB;
+            });
+
+            // Retorna o array atualizado e sem duplicados, organizado
+            return sortedEvolutions;
           });
         });
       }
-      // console.log('evolutions:', evolutions);
     }
 
     if (url) getEvolutions();
