@@ -18,9 +18,6 @@ const Pokemon = ({ pokemonName, setPokemonName }) => {
 
   const url = 'https://pokeapi.co/api/v2/pokemon/';
 
-  //Get only the pokemon name from url
-  // const pokemonName = window.location.href.split('/').pop();
-
   //Retorna infos do pokemon
   useEffect(() => {
     async function getInfos() {
@@ -44,7 +41,7 @@ const Pokemon = ({ pokemonName, setPokemonName }) => {
         const response = await fetch(infos.species.url);
         const speciesJson = await response.json();
 
-        console.log('speciesJson:', speciesJson);
+        // console.log('speciesJson:', speciesJson);
 
         if (response.ok && speciesJson) {
           sethabitat(speciesJson.habitat.name);

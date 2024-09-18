@@ -4,8 +4,6 @@ import { NavLink } from 'react-router-dom';
 
 const PokemonItem = ({ pokemon, setPokemonName }) => {
   function handleClick() {
-    console.log(pokemon.name);
-
     setPokemonName(pokemon.name);
   }
 

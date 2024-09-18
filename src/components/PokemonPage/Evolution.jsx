@@ -9,16 +9,14 @@ const Evolution = ({ url, setPokemonName }) => {
 
   //getEvolutions
   useEffect(() => {
-    let evolution1;
-    let evolution2;
     async function getEvolutions() {
       const response = await fetch(url);
       const json = await response.json();
 
+      console.log('evolutionFetch:', json);
+
       if (response.ok && json) {
         json.chain.evolves_to.forEach((element) => {
-          // console.log(element);
-
           setEvolutions((prevEvolutions) => {
             // Cria um novo array concatenando o estado anterior com o novo valor
             const evolution1 = [...prevEvolutions, element.species];
