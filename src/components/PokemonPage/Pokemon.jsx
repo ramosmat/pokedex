@@ -63,10 +63,17 @@ const Pokemon = ({ pokemonName, setPokemonName }) => {
           <div className={styles.divStats}>
             <div className={styles.bgDark}>
               <div className={styles.divImg}>
-                <img
-                  src={infos.sprites.other.showdown.front_default}
-                  alt="pokemon"
-                />
+                {infos.sprites.other.showdown.front_default ? (
+                  <img
+                    src={infos.sprites.other.showdown.front_default}
+                    alt="pokemon"
+                  />
+                ) : (
+                  <img
+                    src={infos.sprites.other.dream_world.front_default}
+                    alt="pokemon"
+                  />
+                )}
               </div>
               <div className={styles.qualities}>
                 <h4>
@@ -122,19 +129,23 @@ const Pokemon = ({ pokemonName, setPokemonName }) => {
           </div>
         </section>
 
-        <section className={styles.sectionEvolution}>
-          <h1 className={`titulo`}>
-            Cadeia de evoluções <span>.</span>
-          </h1>
-          <div className={styles.divEvolutions}>
-            <Evolution url={chainURL} setPokemonName={setPokemonName} />
-          </div>
-          <div className={styles.divButton}>
-            <NavLink to="/">
-              <button className={styles.button}>VOLTAR</button>
-            </NavLink>
-          </div>
-        </section>
+        {chainURL ? (
+          <section className={styles.sectionEvolution}>
+            <h1 className={`titulo`}>
+              Cadeia de evoluções <span>.</span>
+            </h1>
+            <div className={styles.divEvolutions}>
+              <Evolution url={chainURL} setPokemonName={setPokemonName} />
+            </div>
+            <div className={styles.divButton}>
+              <NavLink to="/">
+                <button className={styles.button}>VOLTAR</button>
+              </NavLink>
+            </div>
+          </section>
+        ) : (
+          ''
+        )}
       </>
     );
   }

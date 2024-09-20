@@ -1,7 +1,7 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 
 const useBrief = () => {
-  const [pokemons, setPokemons] = useState([]);
+  const [pokemonsList, setPokemonsList] = useState([]);
   const url = 'https://pokeapi.co/api/v2/pokemon/';
 
   const getPokemonBrief = useCallback(async (pokemon) => {
@@ -29,7 +29,7 @@ const useBrief = () => {
       };
 
       // Usar a função de atualização para garantir que estamos atualizando o estado corretamente
-      setPokemons((prevPokemons) => {
+      setPokemonsList((prevPokemons) => {
         // Cria um novo array concatenando o estado anterior com os novos dados
         const updatedPokemons = [...prevPokemons, newDados];
 
@@ -45,7 +45,7 @@ const useBrief = () => {
     }
   }, []);
 
-  return { pokemons, getPokemonBrief };
+  return { pokemonsList, getPokemonBrief };
 };
 
 export default useBrief;

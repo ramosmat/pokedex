@@ -5,15 +5,13 @@ import PokemonItem from '../Pokemons/PokemonItem';
 
 const Evolution = ({ url, setPokemonName }) => {
   const [evolutions, setEvolutions] = useState([]);
-  const { pokemons, getPokemonBrief } = useBrief();
+  const { pokemonsList, getPokemonBrief } = useBrief();
 
   //getEvolutions
   useEffect(() => {
     async function getEvolutions() {
       const response = await fetch(url);
       const json = await response.json();
-
-      console.log('evolutionFetch:', json);
 
       if (response.ok && json) {
         // Adiciona o primeiro nível de evolução: json.chain.species
@@ -47,7 +45,7 @@ const Evolution = ({ url, setPokemonName }) => {
               return idA - idB;
             });
 
-            // Retorna o array atualizado e sem duplicados, organizado
+            // Retorna o array atualizado e sem duplicados, organizado para setEvolutions
             return sortedEvolutions;
           });
         });
@@ -66,17 +64,19 @@ const Evolution = ({ url, setPokemonName }) => {
     }
   }, [evolutions]);
 
-  return (
-    <div className={styles.evolucao}>
-      {pokemons.map((pokemon) => (
-        <PokemonItem
-          key={pokemon.name}
-          pokemon={pokemon}
-          setPokemonName={setPokemonName}
-        />
-      ))}
-    </div>
-  );
+  if (pokemonsList) {
+    return (
+      <ul className={styles.evolucao}>
+        {pokemonsList.map((pokemon) => (
+          <PokemonItem
+            key={pokemon.name}
+            pokemon={pokemon}
+            setPokemonName={setPokemonName}
+          />
+        ))}
+      </ul>
+    );
+  }
 };
 
 export default Evolution;

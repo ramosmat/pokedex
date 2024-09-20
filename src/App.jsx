@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Home from './components/Home';
 import Pokemon from './components/PokemonPage/Pokemon';
 import { useState } from 'react';
+import { PokemonStorage } from './UserContext';
 
 function App() {
   const [pokemonName, setPokemonName] = useState();
@@ -11,19 +12,24 @@ function App() {
   return (
     <section className="grid-container">
       <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route
-            path="pokemon/*"
-            element={
-              <Pokemon
-                pokemonName={pokemonName}
-                setPokemonName={setPokemonName}
-              />
-            }
-          />
-          <Route path="*" element={<Home setPokemonName={setPokemonName} />} />
-        </Routes>
+        <PokemonStorage>
+          <Header />
+          <Routes>
+            <Route
+              path="pokemon/*"
+              element={
+                <Pokemon
+                  pokemonName={pokemonName}
+                  setPokemonName={setPokemonName}
+                />
+              }
+            />
+            <Route
+              path="*"
+              element={<Home setPokemonName={setPokemonName} />}
+            />
+          </Routes>
+        </PokemonStorage>
       </BrowserRouter>
     </section>
   );

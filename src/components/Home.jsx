@@ -1,63 +1,84 @@
 import styles from './Home.module.css';
-import { useEffect, useState } from 'react';
-import useFetch from '../hooks/useFetch';
-import useBrief from '../hooks/useBrief';
+import { useContext, useEffect, useState } from 'react';
 import PokemonItem from './Pokemons/PokemonItem';
-import Button from './Helper/Button';
+import { UserContext } from '../UserContext';
 
 const Home = ({ setPokemonName }) => {
-  const url = 'https://pokeapi.co/api/v2/pokemon/';
-  const { data, loading, request } = useFetch();
-  const { pokemons, getPokemonBrief } = useBrief();
-  const [nextPage, setNextPage] = useState();
+  const { loading, pokemonsList } = useContext(UserContext);
+  const [dados, setDados] = useState();
+  const [currentIndex, setCurrentIndex] = useState(10);
+  const [search, setSearch] = useState('');
 
-  // Pegar os primeiros pokemons da API
+  //setDados para os primeiros pokemons de pokemonsList
   useEffect(() => {
-    async function getPokemons() {
-      const { json } = await request(`${url}?limit=10`); // Retorna name e url dos pokemons
-
-      // console.log('primeiro fetch:', json);
-      setNextPage(json.next);
+    if (pokemonsList) {
+      setDados(pokemonsList.slice(0, 10));
     }
+  }, [pokemonsList]);
 
-    getPokemons();
-  }, [request, url]);
+  function getMorePokemons() {
+    // Determina o próximo grupo de 20 objetos
+    const novosDados = pokemonsList.slice(currentIndex, currentIndex + 10);
 
-  // Executar a função getPokemonBrief para cada URL para pegar resumo de cada pokemon
+    // Atualiza o estado 'dados' adicionando os novos objetos
+    setDados((prevDados) => [...prevDados, ...novosDados]);
+
+    // Atualiza o índice atual
+    setCurrentIndex((prevIndex) => prevIndex + 10);
+  }
+
   useEffect(() => {
-    if (data) {
-      data.forEach((pokemon) => {
-        getPokemonBrief(pokemon);
-      });
+    if (search === '') {
+      // Se o campo de pesquisa estiver vazio, voltar aos dados iniciais
+      setDados(pokemonsList.slice(0, currentIndex));
     }
-  }, [data]);
+    if (search !== '') {
+      const pokemons = pokemonsList.filter(
+        (pokemon) =>
+          pokemon.name.toLowerCase().includes(search.toLocaleLowerCase()) ||
+          String(pokemon.num).includes(search.toLocaleLowerCase()),
+      );
+
+      setDados(pokemons);
+    }
+  }, [search]);
 
   if (loading) {
     return <div>Loading...</div>;
   }
 
-  if (data && pokemons) {
+  if (dados) {
     return (
       <section className={styles.sectionSel}>
-        <h1 className="titulo">
-          escolha seu pokemon <span>.</span>
-        </h1>
+        <div className={styles.divTitulo}>
+          <h1 className="titulo">
+            escolha seu pokemon <span>.</span>
+          </h1>
+
+          <div className={styles.inputWrapper}>
+            <input
+              type="search"
+              placeholder="Pesquise por nome ou número"
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+            />
+          </div>
+        </div>
         <div className={styles.divSel}>
-          <div className={styles.selecao}>
-            {pokemons.map((pokemon) => (
+          <ul className={styles.selecao}>
+            {dados.map((pokemon) => (
               <PokemonItem
                 key={pokemon.name}
                 pokemon={pokemon}
                 setPokemonName={setPokemonName}
               />
             ))}
+          </ul>
+          <div className={styles.divButton}>
+            <button onClick={getMorePokemons} className={styles.button}>
+              CARREGAR MAIS
+            </button>
           </div>
-          <Button
-            nextPage={nextPage}
-            setNextPage={setNextPage}
-            getPokemonBrief={getPokemonBrief}
-            text="CARREGAR MAIS"
-          />
         </div>
       </section>
     );
