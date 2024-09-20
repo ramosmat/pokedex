@@ -5,6 +5,11 @@ import { NavLink } from 'react-router-dom';
 const PokemonItem = ({ pokemon, setPokemonName }) => {
   function handleClick() {
     setPokemonName(pokemon.name);
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   }
 
   if (pokemon)
