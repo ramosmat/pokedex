@@ -1,147 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Pokedex para consulta à status de Pokemons"
-    />
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <title>Pokedex</title>
-  </head>
-  <body>
-    <div class="grid-container">
-      <nav class="menu">
-        <h1>Pokedex</h1>
-      </nav>
 
-      <section id="pokemon-select">
-        <h1>Selecione o Pokemon</h1>
-        <form id="form-select">
-          <select name="pokemons" id="pokemons" aria-label="Seleção">
-            <option value="" disabled selected hidden>Selecione...</option>
-            <!-- <option value="bulbasaur">Bulbasauro</option> -->
-          </select>
-        </form>
-        <div data-img>
-          <img id="pokemon-img" src="" alt="Imagem do pokemon" />
-        </div>
-      </section>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Pokedex para consulta à status de Pokemons" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <title>Pokedex</title>
+</head>
 
-      <section id="pokemon-infos">
-        <div>
-          <h1>Informações sobre o pokemon</h1>
-        </div>
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/index.jsx"></script>
+</body>
 
-        <div class="informacoes">
-          <article id="art1">
-            <div class="info altura">
-              <h3>Altura:</h3>
-              <p></p>
-            </div>
-
-            <div class="info peso">
-              <h3>Peso:</h3>
-              <p></p>
-            </div>
-
-            <div class="info habitat">
-              <h3>Habitat:</h3>
-              <p></p>
-            </div>
-
-            <div class="info tipo">
-              <h3>Tipo</h3>
-              <p></p>
-            </div>
-          </article>
-
-          <article id="status">
-            <h3>Status base:</h3>
-            <div class="hp stats">
-              <label for="hp">HP</label>
-              <div id="hp" class="barBg">
-                <div data-value></div>
-              </div>
-              <!-- <input id="hp" type="range" value="0" /> -->
-              <p></p>
-            </div>
-
-            <div class="atk stats">
-              <label for="attack">Ataque</label>
-              <div id="attack" class="barBg">
-                <div data-value></div>
-              </div>
-              <!-- <input id="attack" type="range" value="0" /> -->
-              <p></p>
-            </div>
-
-            <div class="def stats">
-              <label for="defense">Defesa</label>
-              <div id="defense" class="barBg">
-                <div data-value></div>
-              </div>
-              <!-- <input id="defense" type="range" value="0" /> -->
-              <p></p>
-            </div>
-
-            <div class="spec-atk stats">
-              <label for="special-attack">Ataque Especial</label>
-              <div id="special-attack" class="barBg">
-                <div data-value></div>
-              </div>
-              <!-- <input id="special-attack" type="range" value="0" /> -->
-              <p></p>
-            </div>
-
-            <div class="spec-def stats">
-              <label for="special-defense">Defesa Especial</label>
-              <div id="special-defense" class="barBg">
-                <div data-value></div>
-              </div>
-              <!-- <input id="special-defense" type="range" value="0" /> -->
-              <p></p>
-            </div>
-
-            <div class="speed stats">
-              <label for="speed">Velocidade</label>
-              <div id="speed" class="barBg">
-                <div data-value></div>
-              </div>
-              <!-- <input id="speed" type="range" value="0" /> -->
-              <p></p>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <footer id="contato" class="footer">
-        <div class="footer-container">
-          <p class="footer-texto">
-            Estou disponível para novos projetos no momento. Entre em contato
-            comigo e marcamos uma conversa 👋
-          </p>
-
-          <ul class="footer-contato">
-            <li class="email">matheusramosbi.13@gmail.com</li>
-            <li class="linkedin">
-              <a
-                href="https://www.linkedin.com/in/matheus-ramos-amaral-00880314b/"
-                target="_blank"
-                >LinkedIn</a
-              >
-            </li>
-            <li class="github">
-              <a href="https://github.com/ramosmat" target="_blank">GitHub</a>
-            </li>
-          </ul>
-
-          <p class="footer-copy">Alguns direitos Reservados</p>
-        </div>
-      </footer>
-    </div>
-
-    <script type="module" src="js/script.js"></script>
-  </body>
 </html>

@@ -1,0 +1,157 @@
+.sectionSel {
+  grid-column: 2/-1;
+  display: flex;
+  flex-direction: column;
+}
+
+.divTitulo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.divTitulo h1 {
+  grid-column: 1/1;
+  margin-bottom: 0;
+}
+
+.inputWrapper {
+  position: relative;
+  align-items: center;
+  width: 300px;
+}
+
+.inputWrapper input {
+  font-family: Roboto;
+  font-weight: 500;
+  padding: 8px 16px;
+  border: 2px solid #d6d6d6;
+  border-radius: 4px;
+  width: inherit;
+  grid-column: 2/-1;
+  transition: 0.3s;
+}
+
+.inputWrapper::after {
+  content: '';
+  width: 24px;
+  height: 24px;
+  background: url('../assets/search.svg') no-repeat center;
+  position: absolute;
+  display: block;
+  right: 8px;
+  top: 7px;
+}
+
+.inputWrapper input:hover,
+.inputWrapper input:focus {
+  border: 2px solid #ffc636;
+  box-shadow: 0 0 3px 1px #ffc636;
+  outline: none;
+}
+
+.divSel {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+.selecao {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+  justify-content: center;
+  gap: 30px 15px;
+  margin-bottom: 30px;
+  margin-right: 48px;
+}
+
+.divButton {
+  place-self: center;
+  transition: 0.3s;
+}
+
+.divButton:hover {
+  transform: translateY(-3px);
+}
+
+.button {
+  padding: 15px 120px;
+  border: none;
+  border-radius: 2px;
+  background: linear-gradient(#ffc636, #c98f00);
+  color: black;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media (width<=1550px) {
+  .selecao {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (width<=1050px) {
+  .sectionSel {
+    padding: 0 48px;
+  }
+  .selecao {
+    grid-template-columns: repeat(3, 1fr);
+    margin-right: 0;
+  }
+  .divTitulo {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .divTitulo h1,
+  .divTitulo .inputWrapper {
+    place-self: center;
+  }
+}
+
+@media (width<=800px) {
+  .selecao {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width <= 500px) {
+  .sectionSel {
+    grid-column: 1 / -1;
+    align-items: center;
+    padding: 0;
+  }
+  .selecao {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (width <= 450px) {
+  .divSel {
+    margin-bottom: 40px;
+  }
+}
+
+@media (width <=400px) {
+  .sectionSel {
+    padding: 0 28px;
+  }
+  .button {
+    padding: 15px 60px;
+    line-height: 1.5;
+  }
+  .inputWrapper {
+    width: 250px;
+  }
+  .inputWrapper::after {
+    width: 20px;
+    height: 20px;
+  }
+  .inputWrapper input {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+}
