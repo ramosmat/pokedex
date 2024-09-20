@@ -5,6 +5,7 @@ import Home from './components/Home';
 import Pokemon from './components/PokemonPage/Pokemon';
 import { useState } from 'react';
 import { PokemonStorage } from './UserContext';
+import Footer from './components/Footer';
 
 function App() {
   const [pokemonName, setPokemonName] = useState();
@@ -29,6 +30,7 @@ function App() {
               element={<Home setPokemonName={setPokemonName} />}
             />
           </Routes>
+          <Footer />
         </PokemonStorage>
       </BrowserRouter>
     </section>

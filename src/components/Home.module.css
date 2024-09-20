@@ -118,7 +118,7 @@
   }
 }
 
-@media (width <= 500px) {
+@media (width <= 600px) {
   .sectionSel {
     grid-column: 1 / -1;
     align-items: center;

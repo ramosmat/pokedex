@@ -1,0 +1,80 @@
+.footerBg {
+  background: black;
+  grid-column: 1/-1;
+  color: white;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 20px;
+  align-items: center;
+  padding: 32px 48px;
+}
+
+.mensagem {
+  font-family: Poppins;
+  max-width: 500px;
+  font-size: 32px;
+}
+
+.contato {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-family: Roboto;
+  color: white;
+}
+
+.contato h3 {
+  font-size: 32px;
+}
+
+.contato ul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.firstUl::after {
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: #424242;
+}
+
+.contato li,
+.contato a {
+  font-size: 24px;
+  color: #b3b3b3;
+}
+
+.contato a {
+  display: flex;
+  flex-direction: column;
+}
+
+.contato a:hover {
+  color: white;
+}
+
+@media (width <= 1050px) {
+  .footer {
+    flex-direction: column;
+    gap: 40px;
+  }
+}
+
+@media (width <= 400px) {
+  .mensagem,
+  .contato h3 {
+    font-size: 24px;
+  }
+  .contato li,
+  .contato a {
+    font-size: 16px;
+  }
+  .contato a {
+    padding: 4px;
+  }
+}

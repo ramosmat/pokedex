@@ -60,7 +60,7 @@
   }
 }
 
-@media (width <= 500px) {
+@media (width <= 600px) {
   .headerBg {
     grid-column: 1 / -1;
   }
