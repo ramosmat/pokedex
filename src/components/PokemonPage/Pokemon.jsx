@@ -137,16 +137,24 @@ const Pokemon = ({ pokemonName, setPokemonName }) => {
             <div className={styles.divEvolutions}>
               <Evolution url={chainURL} setPokemonName={setPokemonName} />
             </div>
-            <div className={styles.divButton}>
-              <NavLink to="/">
-                <button className={styles.button}>VOLTAR</button>
-              </NavLink>
-            </div>
           </section>
         ) : (
           ''
         )}
+        <div className={styles.divButton}>
+          <NavLink to="/">
+            <button className={styles.button}>VOLTAR</button>
+          </NavLink>
+        </div>
       </>
+    );
+  } else {
+    return (
+      <div className={styles.divButton}>
+        <NavLink to="/">
+          <button className={styles.button}>VOLTAR</button>
+        </NavLink>
+      </div>
     );
   }
 };
