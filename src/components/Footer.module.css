@@ -75,6 +75,7 @@
     font-size: 16px;
   }
   .contato a {
-    padding: 4px;
+    padding: 5px;
+    padding-left: 0px;
   }
 }
