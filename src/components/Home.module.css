@@ -28,7 +28,7 @@
   padding: 8px 16px;
   border: 2px solid #d6d6d6;
   border-radius: 4px;
-  width: 300px;
+  width: inherit;
   grid-column: 2/-1;
   transition: 0.3s;
 }
@@ -102,6 +102,14 @@
     grid-template-columns: repeat(3, 1fr);
     margin-right: 0;
   }
+  .divTitulo {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .divTitulo h1,
+  .divTitulo .inputWrapper {
+    place-self: center;
+  }
 }
 
 @media (width<=800px) {
@@ -134,5 +142,16 @@
   .button {
     padding: 15px 60px;
     line-height: 1.5;
+  }
+  .inputWrapper {
+    width: 250px;
+  }
+  .inputWrapper::after {
+    width: 20px;
+    height: 20px;
+  }
+  .inputWrapper input {
+    padding: 6px 12px;
+    font-size: 14px;
   }
 }
